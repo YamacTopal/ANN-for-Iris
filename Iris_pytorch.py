@@ -66,9 +66,9 @@ for epoch in range(epochs):
 with torch.no_grad():
     model.eval()
     y_pred = model(X_test)
-    y_pred = (y_pred > 0.5).float()  # Convert to binary predictions
-    test_accuracy = torch.sum(y_pred == y_test) / y_test.shape[0]
-    print(f'Test Accuracy: {test_accuracy.item():.4f}')
+    y_pred = (y_pred > 0.5)  # Convert to binary predictions
+    test_accuracy = accuracy_score(y_test, y_pred)
+    print(f'Test Accuracy: {test_accuracy:.4f}')
         
 predicted = model(X_test)
     
